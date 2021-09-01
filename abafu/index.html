@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息分享</title>
+    <meta name="keywords" content="7">
+    <meta name="description" content="7">
+    <meta name="author" content="7">
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/cuplayer.css">
+    <script type="text/javascript" src="js/jquery.js"></script> 
+</head>
+
+<body >
+  
+<div class="mymusic">
+<div class="play-box">
+        <audio id="main_audio" autoplay="autoplay" preload="auto" loop>
+            <source src="http://videosrc-cdn.xiaodaka.net/h5_audio/ochvq0DqC1ToDGI0DpZ1nafcSXU0-1-1630468800781.mp3" type="audio/mpeg" />
+            <embed id="main_audio_ie8" hidden="true" autostart="true" height="0" width=0 loop="true" src="http://rm.sina.com.cn/wm/VZ2010050511043310440VK/music/MUSIC1005051622027270.mp3" autoplay="autoplay"/>
+        </audio>
+        <a class="c-white fs-12 icon-play rotate" id="btn-play" href="javascript:void(0);">&nbsp;</a>
+    </div>
+<div class="text">张牧：阿爸父🌹</div>
+</div>
+
+    <script type="text/javascript">
+    //获取picid函数
+    $(function(){
+        $("area").click(function(){
+           var  picId=$(this).attr("data-id");
+           var picSrc="images/img_big/"+picId+".jpg"
+            $(".modal-content>.pic-box>img").attr("src",picSrc);
+        })
+        var isPlaying = function(audio) {return !audio.paused;}
+        var a = document.getElementById('main_audio');
+        if(!(a.play instanceof Function)){
+            a = document.getElementById('main_audio_ie8');
+            isPlaying = function(audio) {return audio.playState==2;}
+        }
+        $('#btn-play').on('click', function() {
+            if($(this).hasClass('rotate')) {
+                a.pause();
+                $(this).removeClass('rotate');
+            } else {
+                a.play();
+                $(this).addClass('rotate');
+            }
+        });
+
+    })
+    </script>
+</body>
+
+</html>
